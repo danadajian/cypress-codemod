@@ -6,25 +6,30 @@ import { program } from 'commander';
 import { sync } from 'glob';
 
 program
-  .option('-f, --file <string>', 'A test file to migrate.')
+  .option('-f, --filePath <string>', 'A path to a test file to migrate.')
   .option('-d, --directory <string>', 'A directory containing test files to migrate.')
   .parse(process.argv);
 
 console.log(chalk.yellowBright('Generating custom command types...'));
 
-const { file, directory, ...options } = program.opts();
+const { filePath, directory, ...options } = program.opts();
 
-if (!file && !directory) {
-  console.error(chalk.red('Please specify one of --file or --directory.'));
+if (!filePath && !directory || filePath && directory) {
+  console.error(chalk.red('Please specify exactly one of --filePath (-f) or --directory (-d).'));
   process.exit(1);
 }
 
-const filePaths = sync(`${directory.trim()}${directory.endsWith('/') ? '' : '/'}**/*`, {
-  nodir: true
-});
+if (directory) {
+  const filePaths = sync(`${directory.trim()}${directory.endsWith('/') ? '' : '/'}**/*`, {
+    nodir: true
+  });
+  filePaths.forEach(filePath => {
+    convertJestTestToComponentTest(filePath, filePath, options);
+  });
+}
 
-filePaths.forEach(filePath => {
+if (filePath) {
   convertJestTestToComponentTest(filePath, filePath, options);
-});
+}
 
 console.log(chalk.bgGreen('Codemod complete!'));

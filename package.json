@@ -43,7 +43,7 @@
   },
   "scripts": {
     "build": "tsc --skipLibCheck && mkdir -p node_modules/cypress-codemod/dist && cp -r dist package.json node_modules/cypress-codemod",
-    "cli": "ts-node src/codemod.ts",
+    "cli": "ts-node src/codemod.ts -f test/example1.tsx",
     "format": "prettier --write .",
     "format-check": "prettier .",
     "lint": "eslint --quiet --fix src/**/*",
