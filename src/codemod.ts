@@ -10,7 +10,7 @@ program
   .option('-d, --directory <string>', 'A directory containing test files to migrate.')
   .parse(process.argv);
 
-console.log(chalk.yellowBright('Generating custom command types...'));
+console.log(chalk.yellowBright('Running codemod on specified files...'));
 
 const { filePath, directory, ...options } = program.opts();
 
