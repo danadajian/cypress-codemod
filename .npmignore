@@ -1,0 +1,11 @@
+.editorconfig
+.eslintignore
+.husky
+.nvmrc
+.prettierignore
+.idea
+.github
+cypress
+test
+*.json
+*.yaml

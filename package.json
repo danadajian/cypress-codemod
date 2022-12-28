@@ -3,17 +3,17 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "cypress-codemod": "dist/cli.js"
+    "cypress-codemod": "dist/codemod.js"
   },
   "files": [
     "dist"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/dadajian/cypress-codemod.git"
+    "url": "https://github.com/danadajian/cypress-codemod.git"
   },
   "bugs": {
-    "url": "https://github.com/dadajian/cypress-codemod/issues"
+    "url": "https://github.com/danadajian/cypress-codemod/issues"
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -23,14 +23,11 @@
     "prettier": "2.8.0"
   },
   "devDependencies": {
-    "@types/glob": "8.0.0",
     "@types/jest": "28.1.7",
-    "@types/react": "18.0.24",
+    "@types/lodash": "4.14.191",
     "cypress": "12.2.0",
     "eslint": "8.26.0",
-    "eslint-plugin-cypress": "2.12.1",
     "eslint-plugin-eslint-comments": "3.2.0",
-    "eslint-plugin-filenames": "1.3.2",
     "eslint-plugin-github": "4.4.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jest": "27.1.3",
@@ -38,9 +35,6 @@
     "eslint-plugin-typescript": "0.14.0",
     "husky": "8.0.2",
     "jest": "28.1.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-scripts": "5.0.1",
     "semantic-release": "19.0.5",
     "ts-jest": "28.0.8",
     "ts-node": "10.9.1",
@@ -48,14 +42,10 @@
   },
   "scripts": {
     "build": "tsc --skipLibCheck && mkdir -p node_modules/cypress-codemod/dist && cp -r dist package.json node_modules/cypress-codemod",
-    "cli": "ts-node src/cli.ts",
-    "cypress:open": "cypress open",
-    "cypress:component": "cypress run --component",
-    "cypress:e2e": "cypress run",
+    "cli": "ts-node src/codemod.ts",
     "format": "prettier --write .",
     "format-check": "prettier .",
     "lint": "eslint --quiet --fix src/**/*",
-    "precypress:open": "npm run build",
     "prepare": "husky install",
     "test": "jest"
   },
