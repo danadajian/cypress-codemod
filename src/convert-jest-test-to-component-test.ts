@@ -1,10 +1,10 @@
-import {readFileSync, writeFileSync} from "fs";
-import {resolve} from "path";
-import {parse} from "@babel/parser";
-import * as t from "@babel/types";
-import {generateComponentTestBlock} from "./generate-component-test-block";
-import generate from "@babel/generator";
-import {format, resolveConfig} from "prettier";
+import { readFileSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
+import { parse } from '@babel/parser';
+import * as t from '@babel/types';
+import { generateComponentTestBlock } from './generate-component-test-block';
+import generate from '@babel/generator';
+import { format, resolveConfig } from 'prettier';
 
 export interface Options {
   customMountCommand?: string;
