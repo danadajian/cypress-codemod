@@ -6,7 +6,7 @@ import {
   getIdentifierName
 } from './helpers';
 import { isEqual, uniqWith } from 'lodash';
-import { Options } from './convert-jest-test-to-component-test';
+import { Options } from './codemod';
 
 export const generateComponentTestBlock = (
   arrowFunction: t.ArrowFunctionExpression,

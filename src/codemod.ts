@@ -4,6 +4,12 @@ import { convertJestTestToComponentTest } from './convert-jest-test-to-component
 import * as chalk from 'chalk';
 import { program } from 'commander';
 import { sync } from 'glob';
+import { resolve } from 'path';
+
+export type Options = {
+  customMountCommand?: string;
+  customDOMEmptyCommand?: string;
+};
 
 program
   .option('-f, --filePath <string>', 'A path to a test file to migrate.')
@@ -12,9 +18,10 @@ program
 
 console.log(chalk.yellowBright('Running codemod on specified files...'));
 
-const { filePath, directory, ...options } = program.opts();
+const { filePath, directory } = program.opts();
+const { options } = require(resolve(process.cwd(), 'options'));
 
-if (!filePath && !directory || filePath && directory) {
+if ((!filePath && !directory) || (filePath && directory)) {
   console.error(chalk.red('Please specify exactly one of --filePath (-f) or --directory (-d).'));
   process.exit(1);
 }

@@ -1,5 +1,5 @@
 import * as t from '@babel/types';
-import { Options } from './convert-jest-test-to-component-test';
+import { Options } from './codemod';
 
 export const assertionMap: Record<string, string> = {
   toBeVisible: 'be.visible',
