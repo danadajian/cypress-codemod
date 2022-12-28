@@ -19,7 +19,12 @@ program
 console.log(chalk.yellowBright('Running codemod on specified files...'));
 
 const { filePath, directory } = program.opts();
-const { options } = require(resolve(process.cwd(), 'options'));
+let options = {};
+try {
+  options = require(resolve(process.cwd(), 'options')).options;
+} catch (e) {
+  console.warn(chalk.yellow('No custom options found. Using defaults.'));
+}
 
 if ((!filePath && !directory) || (filePath && directory)) {
   console.error(chalk.red('Please specify exactly one of --filePath (-f) or --directory (-d).'));
