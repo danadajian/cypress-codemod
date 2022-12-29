@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import { convertJestTestToComponentTest } from '../src/codemod';
+import { convertJestTestToComponentTest } from '../src/convert-jest-test-to-component-test';
 import { readFileSync } from 'fs';
 
 const options = {
