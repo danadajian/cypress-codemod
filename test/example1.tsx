@@ -50,7 +50,16 @@ describe('SomeComponent', () => {
     expect(await screen.getByRole('heading', { name: /Heading 2/i })).toBeVisible();
   });
 
-  test('test 6', () => {
+  it('test 6', async () => {
+    const view = render(
+      <SomeComponent>
+        <SomeInnerComponent someProp={'someProp'} />
+      </SomeComponent>
+    );
+    await waitFor(() => expect(view.container).toBeEmptyDOMElement());
+  });
+
+  test('test 7', () => {
     render(
       <SomeComponent>
         <SomeInnerComponent someProp={'someProp'} />
@@ -59,7 +68,7 @@ describe('SomeComponent', () => {
     expect(screen.getByText('Some text')).toBeVisible();
   });
 
-  it('test 7', () => {
+  it('test 8', () => {
     render(
       <SomeComponent>
         <SomeInnerComponent someProp={'someProp'} />
@@ -68,7 +77,7 @@ describe('SomeComponent', () => {
     expect(screen.queryByText('Some text')).toBeNull();
   });
 
-  it('test 8', () => {
+  it('test 9', () => {
     render(
       <SomeComponent mockFn={mockFn}>
         <SomeInnerComponent someProp={'someProp'} />
@@ -79,7 +88,7 @@ describe('SomeComponent', () => {
   });
 });
 
-test('separate test', () => {
+test('separate test', async () => {
   render(
     <SomeComponent>
       <SomeInnerComponent someProp={'someProp'} />

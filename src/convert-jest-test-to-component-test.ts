@@ -63,6 +63,7 @@ export const convertJestTestToComponentTest = (
           generateComponentTestBlock(innerArrowFunction, options)
         ]);
         innerArrowFunction.body = t.blockStatement([t.expressionStatement(expression)]);
+        innerArrowFunction.async = false;
       }
 
       // global describe block is used

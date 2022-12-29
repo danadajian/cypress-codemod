@@ -52,7 +52,8 @@ describe('SomeComponent', () => {
         <SomeInnerComponent someProp={'someProp'} />
       </SomeComponent>
     );
-    cy.findByText('Some text').should('be.visible');
+
+    waitFor(() => expect(view.container).toBeEmptyDOMElement());
   });
 
   it('test 7', () => {
@@ -61,10 +62,19 @@ describe('SomeComponent', () => {
         <SomeInnerComponent someProp={'someProp'} />
       </SomeComponent>
     );
-    cy.findByText('Some text').should('not.exist');
+    cy.findByText('Some text').should('be.visible');
   });
 
   it('test 8', () => {
+    cy.render(
+      <SomeComponent>
+        <SomeInnerComponent someProp={'someProp'} />
+      </SomeComponent>
+    );
+    cy.findByText('Some text').should('not.exist');
+  });
+
+  it('test 9', () => {
     const mockFn = cy.stub().as('mockFn');
     cy.render(
       <SomeComponent mockFn={mockFn}>

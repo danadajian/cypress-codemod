@@ -29,5 +29,5 @@ export const generateCypressMock = (name: string) => {
   const callExpression = t.callExpression(cyStubMemberExpression, []);
   const memberExpression = t.memberExpression(callExpression, t.identifier('as'));
   const expression = t.callExpression(memberExpression, [t.stringLiteral(name)]);
-  return t.variableDeclaration('const', [t.variableDeclarator(t.identifier('mockFn'), expression)]);
+  return t.variableDeclaration('const', [t.variableDeclarator(t.identifier(name), expression)]);
 };

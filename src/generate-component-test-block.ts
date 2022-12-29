@@ -32,6 +32,20 @@ export const generateComponentTestBlock = (
       }
     }
 
+    // remove await from statements
+    if (
+      t.isExpressionStatement(testBodyNode) &&
+      t.isAwaitExpression(testBodyNode.expression) &&
+      t.isCallExpression(testBodyNode.expression.argument)
+    ) {
+      return t.expressionStatement(
+        t.callExpression(
+          testBodyNode.expression.argument.callee,
+          testBodyNode.expression.argument.arguments
+        )
+      );
+    }
+
     if (!t.isExpressionStatement(testBodyNode) || !t.isCallExpression(testBodyNode.expression))
       return testBodyNode;
 
