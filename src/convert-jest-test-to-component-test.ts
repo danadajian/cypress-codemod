@@ -5,7 +5,11 @@ import * as t from '@babel/types';
 import { generateComponentTestBlock } from './generate-component-test-block';
 import generate from '@babel/generator';
 import { format, resolveConfig } from 'prettier';
-import { Options } from './codemod';
+
+export type Options = {
+  customMountCommand?: string;
+  customDOMEmptyCommand?: string;
+};
 
 export const convertJestTestToComponentTest = (
   filePath: string,

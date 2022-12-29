@@ -42,7 +42,7 @@
   },
   "scripts": {
     "build": "tsc --skipLibCheck",
-    "cli": "ts-node src/codemod.ts -f test/example1.tsx",
+    "cli": "ts-node src/codemod.ts -f test/example1.tsx --customMountCommand render",
     "format": "prettier --write .",
     "format-check": "prettier .",
     "lint": "eslint --quiet --fix src/**/*",
